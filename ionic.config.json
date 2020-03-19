@@ -1,0 +1,7 @@
+{
+  "name": "ionic-card-example",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

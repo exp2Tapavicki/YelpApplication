@@ -1,0 +1,19 @@
+<ion-list>
+  <ion-card *ngFor="let business of businessData">
+    <ion-card-header>
+      <ion-card-title>{{business.name}}</ion-card-title>
+    </ion-card-header>
+    <img [src]="business.image_url" />
+    <ion-card-content>
+      <ion-label>Rating: {{business.rating}}</ion-label>
+      <ion-row>
+        <ion-col center text-center>
+          <ion-button color="secondary" ion-button (click)="getDetails(business)">Details</ion-button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-button color="secondary" ion-button (click)="getReviews(business)">Reviews</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-list>

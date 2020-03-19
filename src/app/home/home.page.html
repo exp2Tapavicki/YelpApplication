@@ -1,0 +1,106 @@
+<ion-card>
+  <div>
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-title class="ion-text-center">
+          Yelp Application
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card-header>
+      <ion-button color="secondary" style="margin:auto;display:block" ion-button (click)="showHideFilters()">Show
+        Filters</ion-button>
+      <div [hidden]=isHidden>
+        <ion-input [(ngModel)]="filter.searchTerm" placeholder="Search term" type="text"></ion-input>
+        <ion-row>
+          <ion-col width-50 style="text-align: right">
+            <ion-label>Location</ion-label>
+          </ion-col>
+          <ion-col width-50 style="text-align: left">
+            <ion-toggle [(ngModel)]="filter.locationOrLatitude" id="locationOrLatitude"></ion-toggle>
+          </ion-col>
+          <ion-col width-50 style="text-align: left">
+            <ion-label>Latitude/
+              Longitude</ion-label>
+          </ion-col>
+        </ion-row>
+        <div [hidden]=filter.locationOrLatitude>
+          <ion-input [(ngModel)]="filter.location" placeholder="Location" type="text"></ion-input>
+        </div>
+        <div [hidden]=!filter.locationOrLatitude>
+          <ion-input [(ngModel)]="filter.latitude" step="0.000001" min="0" type="number" placeholder="Latitude">
+          </ion-input>
+          <ion-input [(ngModel)]="filter.longitude" step="0.000001" min="0" type="number" placeholder="Longitude">
+          </ion-input>
+        </div>
+        <ion-input [(ngModel)]="filter.radius" min="0" max="40000" type="number" placeholder="Radius"></ion-input>
+
+        <ion-select [(ngModel)]="filter.categories" placeholder="Categories" multiple="true" cancelText="cancel"
+          okText="ok">
+          <ion-label>Categories</ion-label>
+          <ion-select-option *ngFor="let category of categories; let i = index" [value]="category.alias">
+            {{category.title}}</ion-select-option>
+        </ion-select>
+        <ion-select [(ngModel)]="filter.local" placeholder="Languages" cancelText="cancel" okText="ok">
+          <ion-select-option value="">Language</ion-select-option>
+          <ion-select-option *ngFor="let language of languages; let i = index" [value]="language.code">
+            {{language.country}} - {{language.language}}</ion-select-option>
+        </ion-select>
+        <ion-input [(ngModel)]="filter.limit" min="20" max="50" type="number" placeholder="Limit"></ion-input>
+        <ion-input [(ngModel)]="filter.offset" min="0" type="number" placeholder="Offset"></ion-input>
+        <ion-item>
+          <ion-label>Sort by</ion-label>
+          <ion-select [(ngModel)]="filter.sort_by">
+            <ion-select-option value="best_match">Best match</ion-select-option>
+            <ion-select-option value="rating">Rating</ion-select-option>
+            <ion-select-option value="review_count">Review count</ion-select-option>
+            <ion-select-option value="distance">Distance</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-select [(ngModel)]="filter.price" placeholder="Prices" multiple="true" cancelText="cancel" okText="ok">
+          <ion-label>Prices</ion-label>
+          <ion-select-option *ngFor="let price of prices; let i = index" [value]="price.price">{{price.price_level}}
+          </ion-select-option>
+        </ion-select>
+        <ion-row>
+          <ion-col width-50 style="text-align: right">
+            <ion-label>Open now </ion-label>
+          </ion-col>
+          <ion-col width-50 style="text-align: left">
+            <ion-toggle [(ngModel)]="filter.openNowOrOpenAt" id="openNowOrOpenAt"></ion-toggle>
+          </ion-col>
+          <ion-col width-50 style="text-align: left">
+            <ion-label>Open at </ion-label>
+          </ion-col>
+        </ion-row>
+        <div [hidden]=filter.openNowOrOpenAt>
+          <ion-label width-50 style="text-align: center">Open now</ion-label>
+          <ion-toggle [(ngModel)]="filter.open_now" id="openNow"></ion-toggle>
+        </div>
+        <div [hidden]=!filter.openNowOrOpenAt>
+          <ion-datetime display-format="DD/MM/YYYY HH:mm" id="dat" [(ngModel)]="filter.open_at" placeholder="Open at">
+          </ion-datetime>
+        </div>
+        <ion-select [(ngModel)]="filter.attributes" placeholder="Attributes" multiple="true" cancelText="cancel"
+          okText="ok">
+          <ion-label>Attributes</ion-label>
+          <ion-select-option *ngFor="let attribute of attributes; let i = index" [value]="attribute.attribute">
+            {{attribute.attribute}}</ion-select-option>
+        </ion-select>
+        <ion-col center text-center>
+          <ion-row>
+            <ion-col width-50 style="text-align: right">
+              <ion-button color="tertiary" ion-button (click)="resetFilters()">Reset</ion-button>
+            </ion-col>
+            <ion-col width-50 style="text-align: left">
+              <ion-button color="success" ion-button (click)="filterData()">Ok</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </div>
+    </ion-card-header>
+  </div>
+  <ion-card-content>
+    <app-business [businessData]="businessData"></app-business>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,8 @@
+{
+    "/v3/businesses/*": {
+        "target": "https://api.yelp.com/",
+        "changeOrigin": true,
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

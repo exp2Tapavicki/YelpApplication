@@ -1,6 +1,8 @@
 # YelpApplication
 Yelp Application
 
+![Yelp Application](pictures/Screenshot.png)
+
 # Requirements: 
 * nvm
 

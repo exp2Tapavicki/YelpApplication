@@ -23,7 +23,7 @@ export class BusinessesService {
   private details_url = '/v3/businesses/';
   private reviews_url = '/v3/businesses/{0}/reviews';
   private base_url = 'https://api.yelp.com/';
-  private apiKey = 'Bearer JLt48hqsfzYTOT6j1hmzlkhsfXuIjfpQYNOjiw-nYe8zn51lCX8KRZCE5D-392dPGDVdx1TehOBQs8EgSaLqrUERA0bDBnFu5neBKK9A35Jh7jIavzj4qj5cs17NXXYx';
+  private apiKey = 'Bearer khYPhqTc7f7C-lWOi3xzjf6CZpqGpC2HLxdByLCnKgMurt0gCud1onY-0yCmr_Yr6YOAxtKjPSBBLpPPhf-QuSAg8OdT8xojL5ivgJEnErvjvGA20HTT3pzfmxLWXnYx';
 
   
  
